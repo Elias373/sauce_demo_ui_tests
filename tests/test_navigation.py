@@ -1,7 +1,7 @@
 import allure
 from selene import browser, have
 
-pytestmark = allure.epic("Test Site Navigation")
+
 
 @allure.title("Navigation")
 def test_navigation(authorized_user):

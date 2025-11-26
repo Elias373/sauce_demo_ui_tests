@@ -6,7 +6,7 @@ from pages.main_page import MainPage
 login = LoginPage()
 main = MainPage()
 
-pytestmark = allure.epic("Test Login Screen")
+
 
 @allure.title("Successful Login")
 def test_successful_login(browser_setup):

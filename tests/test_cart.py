@@ -4,7 +4,7 @@ from pages.cart_page import CartPage
 
 cart = CartPage()
 
-pytestmark = allure.epic("Test Cart")
+
 
 @allure.title("Add Item to Cart")
 def test_add_item_to_cart(authorized_user):
