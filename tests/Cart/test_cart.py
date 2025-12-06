@@ -5,9 +5,6 @@ from pages.main_page import MainPage
 from pages.cart_page import CartPage
 
 
-pytestmark = [
-    allure.feature("Cart")
-]
 
 main = MainPage()
 cart = CartPage()

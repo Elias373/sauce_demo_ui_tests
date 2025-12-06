@@ -4,9 +4,6 @@ from selene import browser, have, be
 from pages.login_page import LoginPage
 from pages.main_page import MainPage
 
-pytestmark = [
-    allure.feature("Authentication")
-]
 
 login = LoginPage()
 main = MainPage()

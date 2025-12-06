@@ -3,9 +3,7 @@ import pytest
 from selene import browser, have
 from pages.main_page import MainPage
 
-pytestmark = [
-    allure.feature("Navigation")
-]
+
 
 main = MainPage()
 
