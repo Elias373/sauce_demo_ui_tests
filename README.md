@@ -39,13 +39,21 @@ pytest tests/simple_po.py::test_successful_login -v
 allure serve allure-results
 ```
 
-### Test Scenarios
 
-✅ **Successful Login** - Verify user can log in with valid credentials  
-✅ **Add Item to Cart** - Add specific product to cart and verify counter  
-✅ **Navigation** - Open About page and verify navigation works  
-✅ **Logout** - Successful user logout  
-✅ **Failed Login** - Error handling for invalid credentials
+## Test Coverage
+
+### Authentication Module
+✅ Successful Login - Valid credentials authentication  
+✅ Failed Login - Invalid credentials error handling  
+✅ Logout - User session termination
+
+### Shopping Cart Module
+✅ Add Item to Cart - Product addition with counter verification  
+✅ Remove Item from Cart - Product removal from cart
+
+### Navigation Module
+✅ Menu Navigation - Side menu functionality  
+✅ Product Filtering - Sort products by price
 
 ### Report Examples
 

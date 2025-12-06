@@ -12,7 +12,6 @@ class LoginPage:
         return self
 
 
-
     def should_have_error(self, text):
         browser.element('[data-test="error"]').should(have.text(text))
         return self
