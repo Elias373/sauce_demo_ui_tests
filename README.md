@@ -23,10 +23,10 @@
 Professional test automation framework featuring:
 
 - **Page Object Model (POM)** for maintainable test structure
-- **Allure reporting** with screenshots, videos, and detailed steps
+- **Allure reporting** with screenshots, videos, logs, and detailed steps
 - **Selenoid cloud** test execution in isolated Docker containers
-- **Jenkins CI/CD** pipelines supporting both scheduled and on-demand test runs
-- **Telegram notifications** for real-time results
+- **Jenkins CI/CD** integration for automated test execution and reporting
+- **Telegram notifications** with test completion summaries
 - **Allure TestOps** integration for test management
 - **Jira integration** for defect tracking
 

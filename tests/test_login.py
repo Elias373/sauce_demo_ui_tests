@@ -34,7 +34,7 @@ class TestLogin:
     @allure.title("Logout")
     def test_logout(self, logged_in_main_page):
         with allure.step("Perform logout"):
-            logged_in_main_page.logout()
+            MenuPage().logout()
         with allure.step("Verify user is logged out"):
             browser.element('#login-button').should(be.visible)
 
