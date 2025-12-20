@@ -6,12 +6,12 @@ class MainPage:
         browser.element('.title').should(have.text('Products'))
         return self
 
-    def add_item_to_cart(self, item_id):
-        browser.element(f'#{item_id}').click()
+    def add_item_to_cart(self, item_name):
+        browser.element(f'button[data-test="add-to-cart-{item_name}"]').click()
         return self
 
-    def remove_item_from_cart(self, item_id):
-        browser.element(f'#{item_id}').click()
+    def remove_item_from_cart(self, item_name):
+        browser.element(f'button[data-test="remove-{item_name}"]').click()
         return self
 
     def open_about_page(self):

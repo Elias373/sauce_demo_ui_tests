@@ -1,5 +1,6 @@
 from selene import browser, have
 
+
 class LoginPage:
     def open(self):
         browser.open('https://www.saucedemo.com/')
@@ -10,7 +11,6 @@ class LoginPage:
         browser.element('#password').type(password)
         browser.element('#login-button').click()
         return self
-
 
     def should_have_error(self, text):
         browser.element('[data-test="error"]').should(have.text(text))

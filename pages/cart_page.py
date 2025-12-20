@@ -1,11 +1,10 @@
 from selene import browser, have
 
-class CartPage:
 
+class CartPage:
     def open_cart(self):
         browser.element('#shopping_cart_container').click()
         return self
-
 
     def should_contain_item(self, item_name):
         browser.element('.cart_item').should(have.text(item_name))

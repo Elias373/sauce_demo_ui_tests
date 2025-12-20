@@ -1,11 +1,9 @@
-import os
 import pytest
-from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
 from selene import browser
+from selenium import webdriver
 from dotenv import load_dotenv
+import os
 from utils import attach
-
 
 
 @pytest.fixture(scope='session', autouse=True)
@@ -20,7 +18,18 @@ def browser_setup():
     browser.config.window_height = 1080
     browser.config.timeout = 10.0
 
-    options = Options()
+    selenoid_login = os.getenv('SELENOID_LOGIN', 'user1')
+    selenoid_password = os.getenv('SELENOID_PASSWORD', '1234')
+
+    options = webdriver.ChromeOptions()
+
+    options.set_capability('goog:loggingPrefs', {
+        'browser': 'ALL',
+        'performance': 'ALL',
+        'driver': 'ALL'
+    })
+
+
     options.set_capability("browserName", "chrome")
     options.set_capability("browserVersion", "128.0")
     options.set_capability("selenoid:options", {
@@ -28,11 +37,6 @@ def browser_setup():
         "enableVideo": True
     })
 
-    selenoid_login = os.getenv('SELENOID_LOGIN')
-    selenoid_password = os.getenv('SELENOID_PASSWORD')
-
-    if not selenoid_login or not selenoid_password:
-        pytest.skip("Selenoid credentials not found in .env file")
 
     driver = webdriver.Remote(
         command_executor=f"https://{selenoid_login}:{selenoid_password}@selenoid.autotests.cloud/wd/hub",
@@ -40,20 +44,20 @@ def browser_setup():
     )
 
     browser.config.driver = driver
+
     yield
-
-
 
     attach.add_screenshot(browser)
     attach.add_logs(browser)
+    attach.add_html(browser)
     attach.add_video(browser)
-
 
     browser.quit()
 
 
+
 @pytest.fixture
-def authorized_user(browser_setup):
+def logged_in_main_page(browser_setup):
     from pages.login_page import LoginPage
     from pages.main_page import MainPage
 
