@@ -2,6 +2,7 @@ import allure
 from selene import browser, be
 from pages.login_page import LoginPage
 from pages.menu_page import MenuPage
+from pages.main_page import MainPage
 
 
 @allure.suite("Authentication")
@@ -15,7 +16,6 @@ class TestLogin:
         with allure.step("Enter valid credentials"):
             login_page.login('standard_user', 'secret_sauce')
         with allure.step("Verify user is logged in"):
-            from pages.main_page import MainPage
             MainPage().should_be_loaded()
 
     @allure.title("Failed Login")
@@ -34,7 +34,7 @@ class TestLogin:
     @allure.title("Logout")
     def test_logout(self, logged_in_main_page):
         with allure.step("Perform logout"):
-            MenuPage().logout()
+            logged_in_main_page.logout()
         with allure.step("Verify user is logged out"):
             browser.element('#login-button').should(be.visible)
 

@@ -25,4 +25,3 @@ class TestNavigation:
             f"Prices should be sorted ascending, but got: {prices}"
         print(f"Sorted prices: {sorted(prices)}")
 
-

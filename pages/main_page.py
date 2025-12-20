@@ -21,10 +21,8 @@ class MainPage:
         return self
 
     def get_prices(self):
-
         price_elements = browser.all('.inventory_item_price')
         prices = []
-
         for price_el in price_elements:
             price_text = price_el.get(query.text).replace('$', '')
             prices.append(float(price_text))
@@ -39,6 +37,10 @@ class MainPage:
             f"Prices not sorted ascending. Actual: {prices}, Expected: {sorted_prices}"
 
         return self
+
+
+
+
 
 
 

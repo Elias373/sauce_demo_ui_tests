@@ -4,21 +4,6 @@
 > [SauceDemo](https://www.saucedemo.com/)
 
 ---
-
-## 📋 Project Overview
-
-Professional test automation framework featuring:
-
-- **Page Object Model (POM)** for maintainable test structure
-- **Allure reporting** with screenshots, videos, and detailed steps
-- **Selenoid cloud** for scalable browser execution
-- **Jenkins CI/CD** with manual job execution
-- **Telegram notifications** for real-time results
-- **Allure TestOps** integration for test management
-- **Jira integration** for defect tracking
-
----
-
 ## 🛠 Tech Stack
 
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
@@ -30,6 +15,20 @@ Professional test automation framework featuring:
 ![Telegram](https://img.shields.io/badge/Telegram-26A5E4?style=for-the-badge&logo=telegram&logoColor=white)
 ![TestOps](https://img.shields.io/badge/TestOps-2EA043?style=for-the-badge&logo=allure&logoColor=white)
 ![Jira](https://img.shields.io/badge/Jira-0052CC?style=for-the-badge&logo=jira&logoColor=white)
+
+---
+
+## 📋 Project Overview
+
+Professional test automation framework featuring:
+
+- **Page Object Model (POM)** for maintainable test structure
+- **Allure reporting** with screenshots, videos, and detailed steps
+- **Selenoid cloud** test execution in isolated Docker containers
+- **Jenkins CI/CD** pipelines supporting both scheduled and on-demand test runs
+- **Telegram notifications** for real-time results
+- **Allure TestOps** integration for test management
+- **Jira integration** for defect tracking
 
 ---
 
@@ -52,12 +51,29 @@ venv\Scripts\activate         # Windows
 pip install -r requirements.txt
 ```
 ### Environment Setup
-Create a `.env` file in the project root:
-```bash
-SELENOID_LOGIN=user1
-SELENOID_PASSWORD=1234
+Create a `.env` file in the project root with the following structure:
+
+```env
+# Application under test
+BASE_URL=https://www.saucedemo.com
+VALID_USERNAME=your_username
+VALID_PASSWORD=your_password
+INVALID_USERNAME=test_user
+INVALID_PASSWORD=wrong_password
+
+# Browser settings
+WINDOW_WIDTH=1920
+WINDOW_HEIGHT=1080
+TIMEOUT=10.0
+BROWSER_NAME=chrome
+BROWSER_VERSION=128.0
+
+# Selenoid configuration
+SELENOID_LOGIN=your_selenoid_login
+SELENOID_PASSWORD=your_selenoid_password
+ENABLE_VNC=true
+ENABLE_VIDEO=true
 ```
-*The .env file is included in .gitignore to prevent accidentally committing credentials.*
 
 ### Run Tests
 ```bash
@@ -100,11 +116,11 @@ allure serve allure-results
 
 ---
 
-### 📊 Report Examples
-
-#### [Jenkins](https://jenkins.autotests.cloud/job/UI_DIPLOMA/) Build
-
+## [Jenkins](https://jenkins.autotests.cloud/job/UI_DIPLOMA/) Build
 ![Jenkins Build](readme_media/jenkins_build.png)
+
+---
+### 📊 Report Examples
 
 #### Allure Overview  
 ![Allure Report](readme_media/allure_overview.png)
