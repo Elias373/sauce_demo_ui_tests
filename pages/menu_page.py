@@ -26,4 +26,5 @@ class MenuPage:
         return self
 
     def logout(self):
-        return self.open().click_item("Logout")
+        self.open().click_item("Logout")
+        browser.element("#login-button").should(be.visible)

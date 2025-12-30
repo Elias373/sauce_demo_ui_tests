@@ -1,4 +1,4 @@
-from selene import browser, have, query
+from selene import browser, have, query, be
 
 from pages.menu_page import MenuPage
 
@@ -11,9 +11,14 @@ class MainPage:
         browser.element(".title").should(have.text("Products"))
         return self
 
+    def cart_is_empty(self):
+        browser.element(".shopping_cart_badge").should(be.not_.visible)
+        return self
+
     def add_item_to_cart(self, product_name):
         item_id = product_name.lower().replace(" ", "-")
-        browser.element(f'button[data-test="add-to-cart-{item_id}"]').click()
+        browser.element(f'button[data-test="add-to-cart-{item_id}"]').click(),
+        browser.element(".shopping_cart_badge").should(be.visible.and_(have.text("1")))
         return self
 
     def sort_price_low_to_high(self):
@@ -35,7 +40,7 @@ class MainPage:
         sorted_prices = sorted(prices)
 
         assert (
-            prices == sorted_prices
+                prices == sorted_prices
         ), f"Prices not sorted ascending. Actual: {prices}, Expected: {sorted_prices}"
 
         return self

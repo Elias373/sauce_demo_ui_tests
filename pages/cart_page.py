@@ -4,6 +4,7 @@ from selene import browser, have
 class CartPage:
     def open_cart(self):
         browser.element("#shopping_cart_container").click()
+        browser.element(".title").should(have.text("Your Cart"))
         return self
 
     def should_contain_item(self, item_name):

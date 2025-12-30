@@ -8,13 +8,13 @@ class TestNavigation:
 
     @allure.title("Burger menu full functionality")
     def test_burger_menu_full_functionality(self, logged_in_main_page):
-        menu = MenuPage()
+        menu_page = MenuPage()
         with allure.step("Open menu and verify items"):
-            menu.open().should_have_items_count(4).should_have_items(
+            menu_page.open().should_have_items_count(4).should_have_items(
                 "All Items", "About", "Logout", "Reset App State"
             )
         with allure.step("Close menu with cross button"):
-            menu.close()
+            menu_page.close()
 
     @allure.title("Check price sorting low to high")
     def test_check_price_sorting(self, logged_in_main_page):

@@ -65,7 +65,6 @@ def browser_setup():
 
 @pytest.fixture
 def logged_in_main_page(browser_setup):
-
     from pages.login_page import LoginPage
     from pages.main_page import MainPage
 
